@@ -22,5 +22,9 @@
     "run-sequence": "1.1.5"
   },
   "name": "gsens",
-  "description": "GSens: An Ionic project"
+  "description": "GSens: An Ionic project",
+  "cordovaPlugins": [],
+  "cordovaPlatforms": [
+    "android"
+  ]
 }
