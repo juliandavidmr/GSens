@@ -3,7 +3,8 @@ import { App,	IonicApp,	Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { GettingStartedPage } from './pages/getting-started/getting-started';
 import { ListPage } from './pages/list/list';
-import { ListSensors } from './pages/sensores/list/list_sensors'
+import { SensoresPage } from './pages/sensores/sensores'
+import { ShowOneSensorPage } from './pages/show-one-sensor/show-one-sensor'
 
 @App({
 	templateUrl: 'build/app.html',
@@ -32,7 +33,7 @@ class MyApp {
 			component: ListPage
 		}, {
 			title: 'Sensores',
-			component: ListSensors
+			component: SensoresPage
 		}];
 
 		this.rootPage = GettingStartedPage;
