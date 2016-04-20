@@ -1,14 +1,17 @@
 import 'es6-shim';
-import { App,	IonicApp,	Platform } from 'ionic-angular';
+import { App,	IonicApp,	Platform, Storage, LocalStorage } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { GettingStartedPage } from './pages/getting-started/getting-started';
 import { ListPage } from './pages/list/list';
 import { SensoresPage } from './pages/sensores/sensores'
 import { ShowOneSensorPage } from './pages/show-one-sensor/show-one-sensor'
+import { UsuarioPage } from './pages/usuario/usuario'
+import { Data } from './providers/data/data';
 
 @App({
 	templateUrl: 'build/app.html',
-	config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+	providers: [Data],
+  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 class MyApp {
 	static get parameters() {
@@ -34,6 +37,9 @@ class MyApp {
 		}, {
 			title: 'Sensores',
 			component: SensoresPage
+		}, {
+			title: 'Usuario',
+			component: UsuarioPage
 		}];
 
 		this.rootPage = GettingStartedPage;
