@@ -11,6 +11,7 @@ import {
 import 'rxjs/add/operator/map';
 
 var PouchDB = require('pouchdb');
+var config = require('../config');
 /*
   Generated class for the Data provider.
 
@@ -26,21 +27,18 @@ export class Data {
 	}
 
 	constructor() {
-		this.db = new PouchDB('mytestdb');
-		this.username = '';
-		this.password = '';
-		this.remote = 'http://127.0.0.1:15984/datos_sensor';
+		this.db = new PouchDB(config.pouchdb.name_database);
 
 		let options = {
 			live: true,
 			retry: true,
 			continuous: true,
 			auth: {
-				username: this.username,
-				password: this.password
+				username: config.pouchdb.username,
+				password: config.pouchdb.password
 			}
 		};
-		this.db.sync(this.remote, options);
+		this.db.sync(config.pouchdb.remote_url, options);
 	}
 
 	addDocument(doc) {
@@ -66,7 +64,7 @@ export class Data {
 					this.handleChange(change);
 				});
 			}).catch((error) => {
-				console.log(error);
+				console.log("ERROR DE SINCRONIZACION PouchDB \n"+error);
 			});
 		});
 	}

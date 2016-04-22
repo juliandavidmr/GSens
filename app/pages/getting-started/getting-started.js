@@ -12,7 +12,7 @@ export class GettingStartedPage {
   }
 
   constructor(dataService) {
-    this.datosPage = DatosPage;
+    //this.datosPage = DatosPage;
 
     this.dataService = dataService;
     this.items = [];
@@ -23,14 +23,13 @@ export class GettingStartedPage {
   }
 
   addData(){
-
     let date = new Date();
-
     let newDoc = {
         '_id': date,
-        'message': date.getTime()
+        'message': date.getTime(),
+        'Sensor': 'Sensor xxxxx',
+        'Dato': 23
     };
-
     this.dataService.addDocument(newDoc);
   }
 }

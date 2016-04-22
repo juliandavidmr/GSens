@@ -2,7 +2,7 @@
     <button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Getting Started</ion-title>
+    <ion-title>Started</ion-title>
     <ion-buttons end>
         <button (click)="addData()">
             <ion-icon name="add"></ion-icon>
@@ -11,7 +11,7 @@
 </ion-navbar>
 
 <ion-content padding class="getting-started">
-    <button [navPush]="datosPage">Go To About</button>
+  <!--  <button [navPush]="datosPage">Go To About</button>
     <h3>Getting Started</h3>
     <p>
         Get it started!
@@ -23,5 +23,12 @@
         <ion-item *ngFor="#item of items">
             {{ item.Sensor }}
         </ion-item>
-    </ion-list>
+    </ion-list>-->
+    <ion-card *ngFor="#item of items">
+      <ion-card-header [innerText]="item.Sensor"></ion-card-header>
+      <ion-card-content>
+        <p [innerText]="item.Descripcion"></p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+      </ion-card-content>
+    </ion-card>
 </ion-content>

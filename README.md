@@ -9,6 +9,13 @@ App Android, iOS y WP de monitoreo en *tiempo real* de varios tipos de sensores.
 
 * [node.js] - Backend orientado a eventos I/O
 * [ionic] - Framework para desarrollo de aplicaciones moviles hibridas.
+* [PouchDB] - Base de datos NoSQL javascript
+
+
+### Configuración del servidor
+
+Tener instalado y configurado [PouchDB](https://pouchdb.com/guides/setup-pouchdb.html)
+La base de datos esta en [giecom_github](https://github.com/GIECOM/GSensPouchDB)
 
 ### Instalación
 
@@ -25,3 +32,4 @@ $ ionic serve
    [ionic]: <http://ionicframework.com/>
    [socket.io]: <http://socket.io>
    [momentjs]: <http://momentjs.com/>
+   [PouchDB]: <https://pouchdb.com>
