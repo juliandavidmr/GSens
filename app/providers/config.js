@@ -2,7 +2,7 @@ module.exports = {
 	pouchdb: {
 		name_database: 'mytestdb',
 		username: 'juliandavid',
-		password: 'paranguaterimicaro',
+		password: '123123',
 		remote_url: 'http://127.0.0.1:15984/datos_sensor'
 	},
 	server_http: {

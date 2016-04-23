@@ -1,34 +1,23 @@
 <ion-navbar *navbar primary>
-    <button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Started</ion-title>
-    <ion-buttons end>
-        <button (click)="addData()">
-            <ion-icon name="add"></ion-icon>
-        </button>
-    </ion-buttons>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>
+    Started
+  </ion-title>
 </ion-navbar>
 
+<ion-toolbar primary>
+  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)" ></ion-searchbar>
+</ion-toolbar>
+
 <ion-content padding class="getting-started">
-  <!--  <button [navPush]="datosPage">Go To About</button>
-    <h3>Getting Started</h3>
-    <p>
-        Get it started!
-    </p>
-    <p>
-        <button primary menuToggle>Toggle Menu</button>
-    </p>
-    <ion-list>
-        <ion-item *ngFor="#item of items">
-            {{ item.Sensor }}
-        </ion-item>
-    </ion-list>-->
-    <ion-card *ngFor="#item of items">
-      <ion-card-header [innerText]="item.Sensor"></ion-card-header>
-      <ion-card-content>
-        <p [innerText]="item.Descripcion"></p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-      </ion-card-content>
-    </ion-card>
+  <!--  <button [navPush]="datosPage">Go To About</button>-->
+  <ion-card *ngFor="#item of items">
+    <ion-card-header [innerText]="item.Sensor"></ion-card-header>
+    <ion-card-content>
+      <p [innerText]="item.Descripcion"></p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+    </ion-card-content>
+  </ion-card>
 </ion-content>

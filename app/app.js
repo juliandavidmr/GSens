@@ -7,6 +7,7 @@ import { SensoresPage } from './pages/sensores/sensores'
 import { ShowOneSensorPage } from './pages/show-one-sensor/show-one-sensor'
 import { UsuarioPage } from './pages/usuario/usuario'
 import { Data } from './providers/data/data';
+import { MapsPage } from './pages/maps/maps'
 
 @App({
 	templateUrl: 'build/app.html',
@@ -29,17 +30,25 @@ class MyApp {
 
 		// used for an example of ngFor and navigation
 		this.pages = [{
-			title: 'Getting Started',
-			component: GettingStartedPage
+			title: 'Started',
+			component: GettingStartedPage,
+			icon: 'aperture'
 		}, {
 			title: 'List',
-			component: ListPage
+			component: ListPage,
+			icon: 'list'
 		}, {
 			title: 'Sensores',
-			component: SensoresPage
+			component: SensoresPage,
+			icon: 'radio'
 		}, {
 			title: 'Usuario',
-			component: UsuarioPage
+			component: UsuarioPage,
+			icon: 'person'
+		}, {
+			title: 'Maps',
+			component: MapsPage,
+			icon: 'pin'
 		}];
 
 		this.rootPage = GettingStartedPage;
