@@ -6,6 +6,9 @@ import {
 	Alert
 } from 'ionic-angular';
 
+import { Data } from '../../providers/data/data';
+import {ShowOneSensorPage} from "../show-one-sensor/show-one-sensor";
+
 /*
   Generated class for the SensoresPage page.
 
@@ -18,24 +21,24 @@ import {
 export class SensoresPage {
 	static get parameters() {
 		return [
-			[NavController]
+			[NavController],
+			[Data]
 		];
 	}
 
-	constructor(nav) {
+	constructor(nav, dataService) {
 		this.nav = nav;
+		//this.datosPage = DatosPage;
 
-		this.sensores = [{
-			nombre: 'Sensor de humedad',
-			referencia: 'EERRR',
-			descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-			createAt: new Date()
-		}, {
-			nombre: 'Sensor de nivel',
-			referencia: 'SSR',
-			descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-			createAt: new Date()
-		}]
+    this.searchQuery = '';
+    this.dataService = dataService;
+    this.items_original = [];
+    this.items = [];
+
+    this.dataService.getDocuments().then((result) => {
+      this.items = result;
+      this.items_original = result;
+    });
 	}
 
 	presentActionSheet(event, sensor) {
@@ -82,5 +85,57 @@ export class SensoresPage {
 
 	dismiss() {
 		this.viewCtrl.dismiss();
+	}
+
+	initializeItems() {
+		this.items = this.items_original;
+	}
+
+	/**
+	 * Ver un sensor
+	 * @param  {[type]} event [description]
+	 * @param  {[type]} item  [description]
+	 * @return {[type]}       [description]
+	 */
+	openSensor(event, item) {
+		this.nav.push(ShowOneSensorPage, {
+			item: item
+		})
+	}
+
+	addData(){
+		let date = new Date();
+		let newDoc = {
+			'_id': date,
+			'message': date.getTime(),
+			'Sensor': 'Sensor xxxxx',
+			'Dato': 23
+		};
+		this.dataService.addDocument(newDoc);
+	}
+
+	/**
+	 * Retorna los items que coincidan con la busqueda de la variable searchbar.value
+	 * @param  {[type]} searchbar [description]
+	 * @return {[type]}           [description]
+	 */
+	getItems(searchbar) {
+		// Reset items back to all of the items
+		this.initializeItems();
+
+		// set q to the value of the searchbar
+		var q = searchbar.value;
+
+		// if the value is an empty string don't filter the items
+		if (q.trim() === '') {
+			return;
+		}
+
+		this.items = this.items.filter((v) => {
+			if (v.Sensor.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+				return true;
+			}
+			return false;
+		})
 	}
 }
