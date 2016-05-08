@@ -14,7 +14,6 @@
 // Ionic's default Sass variable values. App Shared Sass imports belong
 // in the app.core.scss file and not this file. Sass variables specific
 // to the mode belong in either the app.ios.scss or app.md.scss files.
-//$menu-width: 250px;
 
 // App Shared Color Variables
 // --------------------------------------------------
@@ -35,3 +34,6 @@ $colors: (
   assertive:  #ef473a,
   balanced:   #33cd5f
 );
+
+
+$background-color: #fff;

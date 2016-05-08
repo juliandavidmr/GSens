@@ -28,7 +28,8 @@
     {
       "locator": "https://github.com/litehelpers/Cordova-sqlite-storage",
       "id": "cordova-sqlite-storage"
-    }
+    },
+    "cordova-plugin-whitelist"
   ],
   "cordovaPlatforms": [
     "android"

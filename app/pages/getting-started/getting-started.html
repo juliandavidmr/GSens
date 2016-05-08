@@ -7,17 +7,9 @@
   </ion-title>
 </ion-navbar>
 
-<ion-toolbar primary>
-  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)" ></ion-searchbar>
-</ion-toolbar>
-
 <ion-content padding class="getting-started">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
   <!--  <button [navPush]="datosPage">Go To About</button>-->
-  <ion-card *ngFor="#item of items">
-    <ion-card-header [innerText]="item.Sensor"></ion-card-header>
-    <ion-card-content>
-      <p [innerText]="item.Descripcion"></p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-    </ion-card-content>
-  </ion-card>
 </ion-content>

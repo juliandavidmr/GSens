@@ -4,10 +4,20 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-navbar *navbar>
-  <ion-title>datos</ion-title>
+<ion-navbar *navbar primary>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Captura</ion-title>
 </ion-navbar>
 
 <ion-content padding class="datos">
-
+  <ion-list>
+    <button ion-item *ngFor="#item of items_captura">
+      {{item.NombreSensor}}
+      <div class="item-note" item-right>
+        {{item.Referencia}}
+      </div>
+    </button>
+  </ion-list>
 </ion-content>

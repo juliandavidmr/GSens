@@ -14,10 +14,10 @@
 <ion-content padding class="getting-started">
   <!--  <button [navPush]="datosPage">Go To About</button>-->
   <ion-card *ngFor="#item of items" (click)="openSensor($event, item)">
-    <ion-card-header [innerText]="item.Sensor"></ion-card-header>
+    <ion-card-header [innerText]="item.NombreSensor"></ion-card-header>
     <ion-card-content>
+      <p [innerText]="item.Referencia"></p>
       <p [innerText]="item.Descripcion"></p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
     </ion-card-content>
   </ion-card>
 </ion-content>

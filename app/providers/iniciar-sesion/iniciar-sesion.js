@@ -2,16 +2,14 @@ import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
 
-var config = require('../config');
-
 /*
-  Generated class for the DatosSensor provider.
+  Generated class for the IniciarSesion provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class DatosSensor {
+export class IniciarSesion {
   static get parameters(){
     return [[Http]]
   }

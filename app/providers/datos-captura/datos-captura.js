@@ -1,49 +1,35 @@
-/*
-  Generated class for the Data provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-
-	Provider de datos_sensor directamente desde PouchDB.
-*/
-
-import { Injectable } from 'angular2/core';
-import { Storage, SqlStorage } from 'ionic-angular';
-import { Http } from 'angular2/http';
+import {Injectable} from 'angular2/core';
+import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
 
 var PouchDB = require('pouchdb');
 var config = require('../config');
 
 @Injectable()
-export class Data {
-	static get parameters() {
-		return [
-			[Http]
-		]
-	}
+export class DatosCaptura {
+  static get parameters(){
+    return [
+      [Http]
+    ]
+  }
 
-	constructor() {
-		this.db = new PouchDB(config.pouchdb.name_database);
+  constructor() {
+    this.db = new PouchDB(config.pouchdb.name_database_1);
 
-		let options = {
-			live: true,
-			retry: true,
-			continuous: true,
-			auth: {
-				username: config.pouchdb.username,
-				password: config.pouchdb.password
-			}
-		};
-		
-		this.db.sync(config.pouchdb.remote_url_datos_sensor, options);
-	}
+    let options = {
+      live: true,
+      retry: true,
+      continuous: true,
+      auth: {
+        username: config.pouchdb.username,
+        password: config.pouchdb.password
+      }
+    };
 
-	addDocument(doc) {
-		this.db.put(doc);
-	}
+    this.db.sync(config.pouchdb.remote_url_datos_captura, options);
+  }
 
-	getDocuments() {
+  getDocumentsDatosCaptura() {
 		return new Promise(resolve => {
 			this.db.allDocs({
 				include_docs: true
@@ -62,7 +48,7 @@ export class Data {
 					this.handleChange(change);
 				});
 			}).catch((error) => {
-				console.log("ERROR DE SINCRONIZACION PouchDB \n"+error);
+				console.log("ERROR DE SINCRONIZACION PouchDB, DatosCaptura, \n\n " + error);
 			});
 		});
 	}

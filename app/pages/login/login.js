@@ -17,4 +17,8 @@ export class LoginPage {
   constructor(nav) {
     this.nav = nav;
   }
+
+  login() {
+    console.log("Iniciar sesion..");
+  }
 }

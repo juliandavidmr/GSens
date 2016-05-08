@@ -1,18 +1,28 @@
 import 'es6-shim';
-import { App,	IonicApp,	Platform, Storage, LocalStorage } from 'ionic-angular';
+import { App,	IonicApp,	Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { GettingStartedPage } from './pages/getting-started/getting-started';
+
+//Pages
 import { ListPage } from './pages/list/list';
-import { SensoresPage } from './pages/sensores/sensores'
-import { ShowOneSensorPage } from './pages/show-one-sensor/show-one-sensor'
-import { UsuarioPage } from './pages/usuario/usuario'
+import { SensoresPage } from './pages/sensores/sensores';
+import { ShowOneSensorPage } from './pages/show-one-sensor/show-one-sensor';
+import { UsuarioPage } from './pages/usuario/usuario';
+import { MapsPage } from './pages/maps/maps';
+import { DatosPage } from './pages/datos/datos';
+import { LoginPage } from "./pages/login/login";
+
+//Providers
 import { Data } from './providers/data/data';
-import { MapsPage } from './pages/maps/maps'
+import { DatosCaptura } from './providers/datos-captura/datos-captura';
 
 @App({
 	templateUrl: 'build/app.html',
-	providers: [Data],
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+	providers: [
+		[Data],
+		[DatosCaptura]
+	],
+  config: {} // http://ionicframework.com/docs/v2/api/config/Config
 })
 class MyApp {
 	static get parameters() {
@@ -49,6 +59,14 @@ class MyApp {
 			title: 'Maps',
 			component: MapsPage,
 			icon: 'pin'
+		}, {
+			title: 'Captura',
+			component: DatosPage,
+			icon: 'star'
+		}, {
+			title: 'Login',
+			component: LoginPage,
+			icon: 'person'
 		}];
 
 		this.rootPage = GettingStartedPage;

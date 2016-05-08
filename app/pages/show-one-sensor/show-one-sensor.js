@@ -21,6 +21,6 @@ export class ShowOneSensorPage {
     this.nav = nav;
 
     this.selectedItemSensor = navParams.get('item');
-
+    //console.log("Sensor seleccionado: " + JSON.stringify(this.selectedItemSensor));
   }
 }

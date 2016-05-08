@@ -5,9 +5,39 @@
   Ionic pages and navigation.
 -->
 <ion-navbar *navbar primary>
-  <ion-title>{{selectedItemSensor.Sensor}}</ion-title>
+   <ion-title>{{selectedItemSensor.NombreSensor}}</ion-title>
 </ion-navbar>
 
 <ion-content padding class="show-one-sensor">
-
+   <ion-card>
+      <ion-card-header>
+        <strong>{{selectedItemSensor.NombreSensor}}</strong>
+      </ion-card-header>
+      <ion-card-content>
+         <p>{{selectedItemSensor.Descripcion}}</p>
+         <p>Referencia
+            {{selectedItemSensor.Referencia}}</p>
+         <p>Creado el
+            {{selectedItemSensor.insertDate}}</p>
+         <p>Actualizado el
+            {{selectedItemSensor.updateDate}}</p>
+         <p>Maximo
+            {{selectedItemSensor.Maximo}}</p>
+         <p>Altura
+            {{selectedItemSensor.Altura}}</p>
+      </ion-card-content>
+   </ion-card>
+   <ion-card>
+      <ion-card-header>
+         Georeferenciación
+      </ion-card-header>
+      <ion-card-content>
+         <p>Latitud
+            <strong>{{selectedItemSensor.Latitud}}</strong>
+         </p>
+         <p>Longitud
+            <strong>{{selectedItemSensor.Longitud}}</strong>
+         </p>
+      </ion-card-content>
+   </ion-card>
 </ion-content>

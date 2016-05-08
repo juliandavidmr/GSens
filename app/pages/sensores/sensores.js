@@ -7,7 +7,7 @@ import {
 } from 'ionic-angular';
 
 import { Data } from '../../providers/data/data';
-import {ShowOneSensorPage} from "../show-one-sensor/show-one-sensor";
+import { ShowOneSensorPage } from "../show-one-sensor/show-one-sensor";
 
 /*
   Generated class for the SensoresPage page.
@@ -28,10 +28,9 @@ export class SensoresPage {
 
 	constructor(nav, dataService) {
 		this.nav = nav;
-		//this.datosPage = DatosPage;
 
+		this.dataService = dataService;
     this.searchQuery = '';
-    this.dataService = dataService;
     this.items_original = [];
     this.items = [];
 
@@ -73,8 +72,8 @@ export class SensoresPage {
 		this.nav.present(actionSheet);
 	}
 
+	//Alerta
   alerta(sensor) {
-		//Alerta
 		let alert = Alert.create({
 			title: sensor.nombre,
 			subTitle: sensor.descripcion,
