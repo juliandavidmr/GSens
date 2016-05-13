@@ -1,20 +1,7 @@
-import {
-	Page,
-	NavController,
-	ActionSheet,
-	Clipboard,
-	Alert
-} from 'ionic-angular';
-
+import { Page, NavController, ActionSheet, Clipboard,	Alert } from 'ionic-angular';
 import { Data } from '../../providers/data/data';
 import { ShowOneSensorPage } from "../show-one-sensor/show-one-sensor";
 
-/*
-  Generated class for the SensoresPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Page({
 	templateUrl: 'build/pages/sensores/sensores.html',
 })
@@ -29,10 +16,12 @@ export class SensoresPage {
 	constructor(nav, dataService) {
 		this.nav = nav;
 
+		this.searchQuery = '';
+
 		this.dataService = dataService;
-    this.searchQuery = '';
-    this.items_original = [];
+
     this.items = [];
+		this.items_original = [];
 
     this.dataService.getDocuments().then((result) => {
       this.items = result;
@@ -40,9 +29,10 @@ export class SensoresPage {
     });
 	}
 
-	presentActionSheet(event, sensor) {
+	presentActionSheet(event, _sensor) {
+		var sensor = _sensor.NombreSensor;
 		let actionSheet = ActionSheet.create({
-			title: 'Opciones para "' + sensor.nombre + '"',
+			title: 'Opciones para "' + sensor + '"',
 			buttons: [{
 				text: 'Destructive',
 				role: 'destructive',
@@ -131,7 +121,7 @@ export class SensoresPage {
 		}
 
 		this.items = this.items.filter((v) => {
-			if (v.Sensor.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+			if (v.NombreSensor.toLowerCase().indexOf(q.toLowerCase()) > -1) {
 				return true;
 			}
 			return false;

@@ -14,19 +14,19 @@ export class DatosCaptura {
   }
 
   constructor() {
-    this.db = new PouchDB(config.pouchdb.name_database_1);
+    this.db = new PouchDB(config.pouchdb_datos_captura.name_database);
 
     let options = {
       live: true,
       retry: true,
       continuous: true,
       auth: {
-        username: config.pouchdb.username,
-        password: config.pouchdb.password
+        username: config.pouchdb_datos_captura.username
+        password: config.pouchdb_datos_captura.password
       }
     };
 
-    this.db.sync(config.pouchdb.remote_url_datos_captura, options);
+    this.db.sync(config.pouchdb_datos_captura.remote_url, options);
   }
 
   getDocumentsDatosCaptura() {

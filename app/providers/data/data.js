@@ -1,20 +1,23 @@
+import {
+	Injectable
+} from 'angular2/core';
+import {
+	Storage,
+	SqlStorage
+} from 'ionic-angular';
+import {
+	Http
+} from 'angular2/http';
+import 'rxjs/add/operator/map';
+
+var PouchDB = require('pouchdb');
+var config = require('../config');
 /*
   Generated class for the Data provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
-
-	Provider de datos_sensor directamente desde PouchDB.
 */
-
-import { Injectable } from 'angular2/core';
-import { Storage, SqlStorage } from 'ionic-angular';
-import { Http } from 'angular2/http';
-import 'rxjs/add/operator/map';
-
-var PouchDB = require('pouchdb');
-var config = require('../config');
-
 @Injectable()
 export class Data {
 	static get parameters() {
@@ -35,8 +38,7 @@ export class Data {
 				password: config.pouchdb.password
 			}
 		};
-		
-		this.db.sync(config.pouchdb.remote_url_datos_sensor, options);
+		this.db.sync(config.pouchdb.remote_url, options);
 	}
 
 	addDocument(doc) {

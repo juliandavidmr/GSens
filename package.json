@@ -29,7 +29,9 @@
       "locator": "https://github.com/litehelpers/Cordova-sqlite-storage",
       "id": "cordova-sqlite-storage"
     },
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-network-information",
+    "cordova-plugin-geolocation"
   ],
   "cordovaPlatforms": [
     "android"

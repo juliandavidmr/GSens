@@ -1,9 +1,9 @@
 import 'es6-shim';
-import { App,	IonicApp,	Platform } from 'ionic-angular';
+import { App,	IonicApp,	Platform, Storage, LocalStorage } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
-import { GettingStartedPage } from './pages/getting-started/getting-started';
 
 //Pages
+import { GettingStartedPage } from './pages/getting-started/getting-started';
 import { ListPage } from './pages/list/list';
 import { SensoresPage } from './pages/sensores/sensores';
 import { ShowOneSensorPage } from './pages/show-one-sensor/show-one-sensor';
@@ -14,13 +14,14 @@ import { LoginPage } from "./pages/login/login";
 
 //Providers
 import { Data } from './providers/data/data';
-import { DatosCaptura } from './providers/datos-captura/datos-captura';
+import { ConnectivityService } from './providers/connectivity-service/connectivity-service';
+//import { DatosCaptura } from './providers/datos-captura/datos-captura';
 
 @App({
 	templateUrl: 'build/app.html',
 	providers: [
 		[Data],
-		[DatosCaptura]
+		[ConnectivityService]
 	],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config
 })
@@ -40,7 +41,7 @@ class MyApp {
 
 		// used for an example of ngFor and navigation
 		this.pages = [{
-			title: 'Started',
+			title: 'Dashboard',
 			component: GettingStartedPage,
 			icon: 'aperture'
 		}, {

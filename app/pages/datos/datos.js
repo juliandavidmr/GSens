@@ -1,5 +1,5 @@
 import {Page, NavController} from 'ionic-angular';
-import {DatosCaptura} from '../../providers/datos-captura/datos-captura';
+//import {DatosCaptura} from '../../providers/datos-captura/datos-captura';
 
 @Page({
   templateUrl: 'build/pages/datos/datos.html',
@@ -7,20 +7,20 @@ import {DatosCaptura} from '../../providers/datos-captura/datos-captura';
 export class DatosPage {
   static get parameters() {
     return [
-      [NavController],
-      [DatosCaptura]
+      [NavController]/*,
+      [DatosCaptura]*/
     ];
   }
 
-  constructor(nav, dataService) {
+  constructor(nav/*, dataService*/) {
     this.nav = nav;
-    this.dataService = dataService;
+    /*this.dataService = dataService;
 
     this.items_captura = [];
 
     this.dataService.getDocumentsDatosCaptura().then((result) => {
       this.items_captura = result;
       console.log("Trayendo datos: " + JSON.stringify(result));
-    });
+    });*/
   }
 }

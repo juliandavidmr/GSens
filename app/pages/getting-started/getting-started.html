@@ -8,8 +8,58 @@
 </ion-navbar>
 
 <ion-content padding class="getting-started">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="kittens">
+        Sensores
+      </ion-segment-button>
+      <ion-segment-button value="puppies">
+        Datos
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchWhen="'puppies'">
+      <ion-item>
+    <!--    <ion-thumbnail item-left>
+          <img src="img/thumbnail-puppy-1.jpg">
+        </ion-thumbnail>-->
+        <h2>Sensores</h2>
+      </ion-item>
+
+      <ion-list>
+        <ion-item-sliding>
+          <ion-item>
+          <!--  <ion-avatar item-left>
+              <img src="img/slimer.png">
+            </ion-avatar>-->
+            <h2>Sensor 1</h2>
+          </ion-item>
+          <ion-item-options>
+            <button primary>
+              <ion-icon name="list"></ion-icon>
+              Datos
+            </button>
+            <button secondary>
+              <ion-icon name="task"></ion-icon>
+              Info
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+
+    </ion-list>
+
+    <ion-list *ngSwitchWhen="'kittens'">
+      <ion-item>
+  <!--      <ion-thumbnail item-left>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>-->
+        <h2>Luna</h2>
+      </ion-item>
+
+    </ion-list>
+  </div>
   <!--  <button [navPush]="datosPage">Go To About</button>-->
 </ion-content>
