@@ -9,10 +9,13 @@
         <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Maps</ion-title>
+    <ion-nav-items secundary>
+      <button (click)="addMarker()">
+        <icon add>+</icon>
+      </button>
+    </ion-nav-items>
 </ion-navbar>
 
 <ion-content padding class="maps">
-  <div id="map">
-
-  </div>
+  <div id="map"></div>
 </ion-content>

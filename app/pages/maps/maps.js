@@ -66,8 +66,9 @@ export class MapsPage {
             console.log("disabling map");
             this.disableMap();
         }
-
     }
+
+    console.log(me);
   }
 
   initMap(){
@@ -86,7 +87,6 @@ export class MapsPage {
     }, (error) => {
         console.log(error);
     });
-
   }
 
   disableMap(){
@@ -120,6 +120,29 @@ export class MapsPage {
 
     document.addEventListener('online', onOnline, false);
     document.addEventListener('offline', onOffline, false);
+  }
+
+  addMarker(){
+    console.log("Center: " + this.map.getCenter());
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: this.map.getCenter()
+    });
+
+    let content = "<h4>Information!</h4>";
+
+    this.addInfoWindow(marker, content);
+  }
+
+  addInfoWindow(marker, content){
+    let infoWindow = new google.maps.InfoWindow({
+      content: content
+    });
+
+    google.maps.event.addListener(marker, 'click', function(){
+      infoWindow.open(this.map, marker);
+    });
 
   }
 }

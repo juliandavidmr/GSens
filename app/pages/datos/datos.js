@@ -1,5 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
-//import {DatosCaptura} from '../../providers/datos-captura/datos-captura';
+import {Http} from 'angular2/http';
+import {NgZone} from "angular2/core";
 
 @Page({
   templateUrl: 'build/pages/datos/datos.html',
@@ -7,20 +8,26 @@ import {Page, NavController} from 'ionic-angular';
 export class DatosPage {
   static get parameters() {
     return [
-      [NavController]/*,
-      [DatosCaptura]*/
+      [NavController],
+      [Http]
     ];
   }
 
-  constructor(nav/*, dataService*/) {
+  constructor(nav) {
     this.nav = nav;
-    /*this.dataService = dataService;
 
-    this.items_captura = [];
+    this.datos = [];
+    this.tiposensores = [];
+    this.socketHost = 'http://127.0.0.1:3000';
 
-    this.dataService.getDocumentsDatosCaptura().then((result) => {
-      this.items_captura = result;
-      console.log("Trayendo datos: " + JSON.stringify(result));
-    });*/
+    this.zone = new NgZone({enableLongStackTrace: false});
+
+    this.socket = io(this.socketHost);
+
+    this.socket.on('datos datos', (dd) => {
+      this.zone.run(() => {
+        this.datos = dd.datosensores;        
+      });
+    })
   }
 }
