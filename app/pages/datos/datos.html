@@ -12,12 +12,50 @@
 </ion-navbar>
 
 <ion-content padding class="datos">
-  <ion-list>
-    <button ion-item *ngFor="#item of datos">
-      {{item.Dato}}
-      <div class="item-note" item-right>
-        {{item.Referencia}}
-      </div>
-    </button>
-  </ion-list>
+
+  <div padding>
+    <ion-segment [(ngModel)]="pesta">
+      <ion-segment-button value="datos">
+        Datos
+      </ion-segment-button>
+      <ion-segment-button value="puppies">
+        Graficas
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pesta">
+    <ion-list *ngSwitchWhen="'datos'">
+
+      <ion-card *ngFor="#item of datos">
+        <ion-item>
+          <h2>{{item.Dato}}</h2>
+          <p>{{moment(item.insertDate).calendar()}}</p>
+        </ion-item>
+
+        <ion-card-content>
+          {{item.fk_idSensor}}
+        </ion-card-content>
+
+        <ion-item>
+          <p>{{moment(item.insertDate).calendar()}}</p>
+          <ion-note item-right>
+            {{moment(item.insertDate).fromNow()}}
+          </ion-note>
+        </ion-item>
+      </ion-card>
+
+    </ion-list>
+
+    <ion-list *ngSwitchWhen="'kittens'">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      ...
+    </ion-list>
+  </div>
+
 </ion-content>

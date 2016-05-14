@@ -1,5 +1,5 @@
 import 'es6-shim';
-import { App,	IonicApp,	Platform, Storage, LocalStorage } from 'ionic-angular';
+import { App,	IonicApp,	Platform, Storage, LocalStorage, Popup } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 //Pages
@@ -11,6 +11,7 @@ import { UsuarioPage } from './pages/usuario/usuario';
 import { MapsPage } from './pages/maps/maps';
 import { DatosPage } from './pages/datos/datos';
 import { LoginPage } from "./pages/login/login";
+import { TutorialPage } from "./pages/tutorial/tutorial";
 
 //Providers
 import { Data } from './providers/data/data';
@@ -68,6 +69,10 @@ class MyApp {
 			title: 'Login',
 			component: LoginPage,
 			icon: 'person'
+		}, {
+			title: 'Tutorial',
+			component: TutorialPage,
+			icon: 'list'
 		}];
 
 		this.rootPage = GettingStartedPage;
@@ -86,5 +91,31 @@ class MyApp {
 		// we wouldn't want the back button to show in this scenario
 		let nav = this.app.getComponent('nav');
 		nav.setRoot(page.component);
+	}
+
+	checkNetwork() {
+		this.platform.ready().then(() => {
+			var networkState = navigator.connection.type;
+
+			var states = {};
+			states[Connection.UNKNOWN]  = 'Unknown connection';
+			states[Connection.ETHERNET] = 'Ethernet connection';
+			states[Connection.WIFI]     = 'WiFi connection';
+			states[Connection.CELL_2G]  = 'Cell 2G connection';
+			states[Connection.CELL_3G]  = 'Cell 3G connection';
+			states[Connection.CELL_4G]  = 'Cell 4G connection';
+			states[Connection.CELL]     = 'Cell generic connection';
+			states[Connection.NONE]     = 'No network connection';
+
+			console.log("entroo");
+
+			Popup.alert({
+					title: "Connection Status",
+					template: states[networkState],
+					cssClass: 'my-alert'
+			}).then(() => {
+					console.log('Alert closed');
+			});
+		});
 	}
 }
