@@ -1,4 +1,5 @@
-var ip 		= 'http://127.0.0.1';
+var ip 		= 'http://192.168.1.57';
+//var ip 		= 'http://127.0.0.1';
 var port 	= '15984';
 
 module.exports = {
@@ -12,6 +13,6 @@ module.exports = {
 		port: port
 	},
 	server_http: {
-		url: 'http://127.0.0.1:3000'
+		url: ip + ':3000'
 	}
 }

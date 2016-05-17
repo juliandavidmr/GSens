@@ -2,6 +2,9 @@ import { Page, NavController, ActionSheet, Clipboard,	Alert } from 'ionic-angula
 import { Data } from '../../providers/data/data';
 import { ShowOneSensorPage } from "../show-one-sensor/show-one-sensor";
 
+//Poviders
+import { FetchSensores } from '../../providers/fetch-sensores/fetch-sensores';
+
 @Page({
 	templateUrl: 'build/pages/sensores/sensores.html',
 })
@@ -9,24 +12,21 @@ export class SensoresPage {
 	static get parameters() {
 		return [
 			[NavController],
-			[Data]
+			[FetchSensores]
 		];
 	}
 
-	constructor(nav, dataService) {
+	constructor(nav, fetch_sensores) {
 		this.nav = nav;
 
 		this.searchQuery = '';
-
-		this.dataService = dataService;
-
-    this.items = [];
+		this.items = [];
 		this.items_original = [];
 
-    this.dataService.getDocuments().then((result) => {
-      this.items = result;
-      this.items_original = result;
-    });
+		fetch_sensores.load().then((data) => {
+			this.items = data.sensores;
+			this.items_original = data.sensores;
+		});
 	}
 
 	presentActionSheet(event, _sensor) {

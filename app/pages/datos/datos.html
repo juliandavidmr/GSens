@@ -30,11 +30,11 @@
       <ion-card *ngFor="#item of datos">
         <ion-item>
           <h2>{{item.Dato}}</h2>
-          <p>{{moment(item.insertDate).calendar()}}</p>
+          <p>{{item.NombreSensor}}</p>
         </ion-item>
 
         <ion-card-content>
-          {{item.fk_idSensor}}
+          {{item.Descripcion}}
         </ion-card-content>
 
         <ion-item>

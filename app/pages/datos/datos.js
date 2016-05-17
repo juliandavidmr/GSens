@@ -19,11 +19,12 @@ export class DatosPage {
   constructor(nav) {
     this.nav = nav;
 
+    moment.locale('es');
     this.moment = moment;
     this.moment.locale('es');
 
     this.datos = [];
-    this.tiposensores = [];
+    this.sensores = [];
     //this.socketHost = 'http://127.0.0.1:3000';
     this.socketHost = conf.ip + ':' + conf.port_socket;
 
@@ -34,8 +35,16 @@ export class DatosPage {
     this.socket.on('datos datos', (dd) => {
       this.zone.run(() => {
         this.datos = dd.datosensores;
+        this.sensores = dd.tiposensores;
         console.log( JSON.stringify(this.datos));
       });
-    })
+    });
+  }
+
+  send(message) {
+    if(message && message != "") {
+      this.socket.emit("chat_message", message);
+    }
+    this.chatBox = "";
   }
 }

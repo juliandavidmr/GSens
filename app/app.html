@@ -1,17 +1,14 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" class="color">
 
   <ion-toolbar primary>
     <ion-title>Menu</ion-title>
   </ion-toolbar>
 
   <ion-content>
-    <ion-list inset>
+    <ion-list inset class='pad'>
       <button menuClose ion-item *ngFor="#p of pages" (click)="openPage(p)">
         <ion-icon name="{{p.icon}}"></ion-icon>
         {{p.title}}
-      </button>
-      <button menuClose ion-item (click)="checkNetwork()">
-        Check
       </button>
     </ion-list>
   </ion-content>

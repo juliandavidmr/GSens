@@ -4,6 +4,8 @@ import {ConnectivityService} from '../../providers/connectivity-service/connecti
 /*
   Generated class for the MapsPage page.
 
+  Mostrar mapa con todos los sensores
+
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
@@ -29,6 +31,10 @@ export class MapsPage {
     this.loadGoogleMaps();
   }
 
+
+  /**
+   * Carga el componente del mapa en la vista
+   */
   loadGoogleMaps() {
     var me = this;
     this.addConnectivityListeners();
@@ -42,7 +48,7 @@ export class MapsPage {
 
             //Load the SDK
             window.mapInit = function(){
-                me.initMap();
+                me.initMapLocalization();
                 me.enableMap();
             }
 
@@ -60,22 +66,39 @@ export class MapsPage {
     } else {
         if(this.connectivity.isOnline()){
             console.log("showing map");
-            this.initMap();
+            this.initMapLocalization();
             this.enableMap();
         } else {
             console.log("disabling map");
             this.disableMap();
         }
     }
-
-    console.log(me);
   }
 
+  /**
+   * Inicializar mapa desde una posicion especifica
+   */
   initMap(){
+    this.mapInitialised = true;
+    let latLng = new google.maps.LatLng(1.6223144999999999, -75.60204519999999);
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  }
+
+  /**
+   * Inicializar mapa desde la posicion de donde se encuentre el usuario.
+   */
+  initMapLocalization(){
     this.mapInitialised = true;
 
     navigator.geolocation.getCurrentPosition( (position) => {
         let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        console.log(position);
 
         let mapOptions = {
           center: latLng,
@@ -89,6 +112,9 @@ export class MapsPage {
     });
   }
 
+  /**
+   * Mensajes de estados del componente mapa
+   */
   disableMap(){
     console.log("disable map");
   }
@@ -97,6 +123,9 @@ export class MapsPage {
     console.log("enable map");
   }
 
+  /**
+   * [addConnectivityListeners description]
+   */
   addConnectivityListeners(){
     var me = this;
 
@@ -122,6 +151,9 @@ export class MapsPage {
     document.addEventListener('offline', onOffline, false);
   }
 
+  /**
+   * addMarker, marcador en el mapa
+   */
   addMarker(){
     console.log("Center: " + this.map.getCenter());
     let marker = new google.maps.Marker({
@@ -143,6 +175,5 @@ export class MapsPage {
     google.maps.event.addListener(marker, 'click', function(){
       infoWindow.open(this.map, marker);
     });
-
   }
 }

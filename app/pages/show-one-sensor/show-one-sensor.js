@@ -1,4 +1,5 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
+import {ConnectivityService} from '../../providers/connectivity-service/connectivity-service';
 
 /*
   Generated class for the ShowOneSensorPage page.
@@ -13,14 +14,17 @@ export class ShowOneSensorPage {
   static get parameters() {
     return [
       [NavController],
-      [NavParams]
+      [NavParams],
+      [ConnectivityService]
     ];
   }
 
-  constructor(nav, navParams) {
+  constructor(nav, navParams, connectivityService) {
     this.nav = nav;
+    this.connectivity = connectivityService;
 
     this.selectedItemSensor = navParams.get('item');
-    //console.log("Sensor seleccionado: " + JSON.stringify(this.selectedItemSensor));
+    console.log(JSON.stringify(this.selectedItemSensor));
+
   }
 }

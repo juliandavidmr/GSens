@@ -16,13 +16,15 @@ import { TutorialPage } from "./pages/tutorial/tutorial";
 //Providers
 import { Data } from './providers/data/data';
 import { ConnectivityService } from './providers/connectivity-service/connectivity-service';
+import { FetchSensores } from './providers/fetch-sensores/fetch-sensores';
 //import { DatosCaptura } from './providers/datos-captura/datos-captura';
 
 @App({
 	templateUrl: 'build/app.html',
 	providers: [
 		[Data],
-		[ConnectivityService]
+		[ConnectivityService],
+		[FetchSensores]
 	],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config
 })
@@ -45,14 +47,14 @@ class MyApp {
 			title: 'Dashboard',
 			component: GettingStartedPage,
 			icon: 'aperture'
-		}, {
+		},/* {
 			title: 'List',
 			component: ListPage,
 			icon: 'list'
-		}, {
+		},*/ {
 			title: 'Sensores',
 			component: SensoresPage,
-			icon: 'radio'
+			icon: 'ion-android-wifi'
 		}, {
 			title: 'Usuario',
 			component: UsuarioPage,
