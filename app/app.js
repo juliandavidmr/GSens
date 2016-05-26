@@ -52,7 +52,7 @@ class MyApp {
 			component: ListPage,
 			icon: 'list'
 		},*/ {
-			title: 'Sensores',
+			title: 'Estaciones',
 			component: SensoresPage,
 			icon: 'ion-android-wifi'
 		}, {

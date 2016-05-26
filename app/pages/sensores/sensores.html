@@ -1,23 +1,54 @@
-<ion-navbar *navbar primary>
+<ion-navbar *navbar green>
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
   <ion-title>
-    Sensores
+    Estaciones
   </ion-title>
 </ion-navbar>
 
-<ion-toolbar primary>
+<ion-toolbar green>
   <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)" placeholder="Buscar"></ion-searchbar>
 </ion-toolbar>
 
 <ion-content padding class="getting-started">
-  <!--  <button [navPush]="datosPage">Go To About</button>-->
-  <ion-card *ngFor="#item of items" (click)="openSensor($event, item)">
-    <ion-card-header [innerText]="item.NombreSensor"></ion-card-header>
-    <ion-card-content>
-      <p [innerText]="item.Referencia"></p>
-      <p [innerText]="item.Descripcion"></p>
-    </ion-card-content>
-  </ion-card>
+
+  <div padding >
+    <ion-segment [(ngModel)]="sensores" green>
+      <ion-segment-button value="description">
+        Descripcion
+      </ion-segment-button>
+      <ion-segment-button value="captura">
+        Captura
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="sensores">
+    <ion-list *ngSwitchWhen="'description'">
+
+      <ion-card *ngFor="#item of items" (click)="openSensor($event, item)">
+        <ion-card-header [innerText]="item.NombreSensor"></ion-card-header>
+        <ion-card-content>
+          <p [innerText]="item.Referencia"></p>
+          <p [innerText]="item.Descripcion"></p>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-list>
+
+    <ion-list *ngSwitchWhen="'captura'">
+      <ion-list inset>
+        <ion-item *ngFor="#item of items" (click)="openSensorCaptura($event, item)">
+          {{item.NombreSensor}}
+        </ion-item>
+      </ion-list>
+    </ion-list>
+  </div>
+
 </ion-content>
+
+<ion-toolbar position="bottom" green>
+  <ion-title *ngIf="items.length == 0">0 encontrados</ion-title>
+  <ion-title *ngIf="items.length > 0">{{items.length > 1? items.length + ' Sensores': items.length + ' Sensor'}}</ion-title>
+</ion-toolbar>

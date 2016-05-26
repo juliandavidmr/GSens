@@ -1,5 +1,5 @@
-var ip 		= 'http://192.168.1.57';
-//var ip 		= 'http://127.0.0.1';
+//var ip 		= 'http://192.168.1.57';
+var ip 		= 'http://127.0.0.1';
 var port 	= '15984';
 
 module.exports = {

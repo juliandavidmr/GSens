@@ -19,13 +19,13 @@ export class TutorialPage {
 
     this.slides = [
      {
-       title: "Welcome to the Docs!",
-       description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
+       title: "Bienvenido a GSens!",
+       description: "<b>GSens</b> te ayuda a monitorear en tiempo real el nivel del agua de los rios ubicados en Florencia-Caquetá.",
        image: "img/ica-slidebox-img-1.png",
      },
      {
-       title: "What is Ionic?",
-       description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
+       title: "Monitoreo",
+       description: "<b>GSens</b> permanece en estado constante monitoreo de distintos sensores.",
        image: "img/ica-slidebox-img-2.png",
      },
      {

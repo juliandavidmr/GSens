@@ -24,7 +24,7 @@ export class Data {
 		return [
 			[Http]
 		]
-	}
+	}	
 
 	constructor() {
 		this.db = new PouchDB(config.pouchdb.name_database);

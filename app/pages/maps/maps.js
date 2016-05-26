@@ -24,6 +24,7 @@ export class MapsPage {
     this.nav = nav;
     this.connectivity = connectivityService;
 
+    this.items = ['1', '2'];
     this.map = null;
     this.mapInitialised = false;
     this.apiKey = null;

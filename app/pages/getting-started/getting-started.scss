@@ -6,4 +6,17 @@
     font-size: 16px;
   }
 
+  .font_white {
+    color: #fff;
+  }
+}
+
+ion-segment[green] .segment-button {
+  color: #FFFFFF;
+}
+
+segment[green] .segment-button.activated, ion-segment[green] .segment-button.segment-activated {
+    border-color: #068481;
+    color: #f4f4f4;
+    opacity: 1;
 }

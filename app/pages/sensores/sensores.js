@@ -1,6 +1,7 @@
 import { Page, NavController, ActionSheet, Clipboard,	Alert } from 'ionic-angular';
 import { Data } from '../../providers/data/data';
 import { ShowOneSensorPage } from "../show-one-sensor/show-one-sensor";
+import { DatosPage } from "../datos/datos";
 
 //Poviders
 import { FetchSensores } from '../../providers/fetch-sensores/fetch-sensores';
@@ -22,6 +23,7 @@ export class SensoresPage {
 		this.searchQuery = '';
 		this.items = [];
 		this.items_original = [];
+		this.sensores = 'description';
 
 		fetch_sensores.load().then((data) => {
 			this.items = data.sensores;
@@ -40,13 +42,7 @@ export class SensoresPage {
 					console.log('Destructive clicked');
 				}
 			}, {
-				text: 'Portapapeles',
-				handler: () => {
-					console.log("Copiado -> " + JSON.stringify(sensor));
-					Clipboard.copy(JSON.stringify(sensor));
-				}
-			}, {
-				text: 'Captura',
+				text: 'Datos',
 				handler: () => {
 					console.log('Archive clicked');
 				}
@@ -65,8 +61,8 @@ export class SensoresPage {
 	//Alerta
   alerta(sensor) {
 		let alert = Alert.create({
-			title: sensor.nombre,
-			subTitle: sensor.descripcion,
+			title: sensor.NombreSensor,
+			subTitle: sensor.Descripcion,
 			buttons: ['OK']
 		});
 		this.nav.present(alert);
@@ -89,7 +85,29 @@ export class SensoresPage {
 	openSensor(event, item) {
 		this.nav.push(ShowOneSensorPage, {
 			item: item
-		})
+		});
+	}
+
+	showModal(event, item) {
+		let modal = Modal.create(ShowOneSensorPage, {
+			item: item
+		});
+		this.nav.present(modal)
+	}
+
+	/**
+	 * Abre la ventana del socket que muestra lo que se esta capturando en tiempo real.
+	 * @param  {[type]} event [description]
+	 * @param  {[type]} item  [description]
+	 * @return {[type]}       [description]
+	 */
+	openSensorCaptura(event, item) {
+		if (item.idSensor) {
+			console.log("Abiendo socket con idSensor " + item.idSensor);
+		}
+		this.nav.push(DatosPage, {
+			idSensor: item.idSensor
+		});
 	}
 
 	addData(){

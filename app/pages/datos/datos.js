@@ -1,4 +1,4 @@
-import {Page, NavController} from 'ionic-angular';
+import {Page, NavController, NavParams} from 'ionic-angular';
 import {Http} from 'angular2/http';
 import {NgZone} from "angular2/core";
 import moment from "moment";
@@ -12,12 +12,14 @@ export class DatosPage {
   static get parameters() {
     return [
       [NavController],
-      [Http]
+      [NavParams]
     ];
   }
 
-  constructor(nav) {
+  constructor(nav, navParams) {
     this.nav = nav;
+
+    this.pesta = 'datos';
 
     moment.locale('es');
     this.moment = moment;
@@ -25,12 +27,20 @@ export class DatosPage {
 
     this.datos = [];
     this.sensores = [];
-    //this.socketHost = 'http://127.0.0.1:3000';
     this.socketHost = conf.ip + ':' + conf.port_socket;
 
-    this.zone = new NgZone({enableLongStackTrace: false});
+    this.zone = new NgZone({
+      enableLongStackTrace: false
+    });
 
     this.socket = io(this.socketHost);
+
+    // Captura el parametro idSensor enviado desde SensoresPage
+    // undefined si no hay nada
+    this.selectedidSensor = navParams.get('idSensor');
+    if(this.selectedidSensor == undefined) {
+
+    }
 
     this.socket.on('datos datos', (dd) => {
       this.zone.run(() => {
